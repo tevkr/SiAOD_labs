@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <ctime>
 #include <string>
 #include <queue>
@@ -25,10 +25,10 @@ void bitwiseSort(int* const arr, const size_t length)
 {
 	int maxDigits = to_string(*(max_element(arr, arr + length))).length();
 	queue<int> q[10];
-	for (size_t i = 0, c = 0; i < maxDigits; i++)
+	for (size_t i = 0; i < maxDigits; i++)
 	{
 		for (size_t j = 0; j < length; j++)
-			q[(arr[j] % (int)pow(10, c + 1)) / (int)pow(10, c)].push(arr[j]);
+			q[(arr[j] % (int)pow(10, i + 1)) / (int)pow(10, i)].push(arr[j]);
 		for (size_t j = 0, k = 0; j < 10; j++)
 		{
 			while (!q[j].empty())
@@ -38,6 +38,5 @@ void bitwiseSort(int* const arr, const size_t length)
 				k++;
 			}
 		}
-		c++;
 	}
 }
